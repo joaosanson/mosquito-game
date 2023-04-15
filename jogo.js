@@ -1,7 +1,20 @@
 var altura = 0;
 var largura = 0;
 var vidas = 1;
-var timer = 5;
+var timer = 60;
+
+var criaMosquitoTempo = 1500;
+
+var nivel = window.location.search;
+nivel = nivel.replace("?", "");
+
+if (nivel === "normal") {
+    criaMosquitoTempo = 1500;
+} else if (nivel === "dificil") {
+    criaMosquitoTempo = 1000;
+} else {
+    criaMosquitoTempo = 750;
+}
 
 function getGameScreensize() {
     altura = window.innerHeight;
@@ -79,4 +92,4 @@ function createRandomSide() {
 }
 setInterval(function () {
     createMosquitoPosition();
-}, 1000);
+}, criaMosquitoTempo);
